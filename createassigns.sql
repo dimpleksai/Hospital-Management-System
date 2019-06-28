@@ -1,0 +1,1 @@
+create table assigns(consult_no int ,test_name varchar(30) ,primary key(consult_no,test_name),foreign key(consult_no) references consults(consult_no),foreign key(test_name) references lab_test(test_name)) ;

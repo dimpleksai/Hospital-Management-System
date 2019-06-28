@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+.right{
+  text-align: right;
+  float:right;
+}
+
+/* Style the tab */
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 18%;
+    height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+input[type="radio"]:checked ~ .reveal-if-active,
+input[type="checkbox"]:checked ~ .reveal-if-active {
+  opacity: 1;
+  max-height: 100px; /* little bit of a magic number :( */
+  overflow: visible;
+}
+.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: 0.5s;
+  input[type="radio"]:checked ~ &,
+  input[type="checkbox"]:checked ~ & {
+    opacity: 1;
+    max-height: 100px;
+    overflow: visible;
+    padding: 10px 20px;
+    transform: scale(1);
+  }
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 80%;
+   
+    height: 2000px;
+    display: none;
+}
+
+/* Clear floats after the tab */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+</style>
+</head>
+<body>
+<h1>INFINITY HOSPITAL</h1><div class="right"><form method ="post" action="/chpass"><button>Change Password</button> <input type="hidden" name="eventname" value=<%= z %> ></form><form method ="post" action="/logout"><button>Logout</button></form></div> <form method="post" action="/book_apt"><button><h3>Book an appointment</h3></button></form>
+
+
+<div class="tab">
+  <button class="tablinks" onmouseover="openCity(event, 'Profile')">Profile</button>
+  <button class="tablinks" onmouseover="openCity(event, 'History')">History</button>
+  <button class="tablinks" onmouseover="openCity(event, 'PMU')">Previous Medicines Used</button>
+  <button class="tablinks" onmouseover="openCity(event, 'PA')">Upcoming Appointments</button>
+</div>
+
+<div id="Profile" class="tabcontent">
+  <h4>Name:<%= p.name %></h4>
+  <h4>Contact:<%= p.contact %></h4>
+  <h4>Gender:<%= p.gender %></h4>
+  <h4>Age:<%= p.age %></h4>
+  <h4>Weight:<%= p.weight %></h4>
+  <h4>Height:<%= p.height %></h4>
+  <h4>Address:<%= p.address %></h4>
+  </div>
+
+<div id="History" class="tabcontent">
+  
+  <% for(var i=0;i<u.length ;i++){ %>
+
+  <h3>Consultation <%= i+1 %>:</h3><br>
+  Date of Consultation: <%= s[i].date_c %> <br>
+  Doctor Name: <%= s[i].name %> <br>
+  Department:<%= s[i].dept_name %> <br>
+  Bill number:<%= u[i].bno %><br>
+  Bill Cost:<%= u[i].cost %><br>
+  <% } %>
+
+
+  
+<h3> Problems Diagnosed </h3><br>
+  <% for(var j=0;j< t.length ;j++){ %>
+  Date of Consultation: <%= t[j].date_c %> <br>
+  Problem Diagnosed: <%= t[j].problem %> <br>
+  <% } %> 
+  
+  <h3> Tests Conducted </h3><br>
+   <% if(x.length >0){ %> 
+    <% for(var j=0;j<x.length ;j++){ %>
+    Date of Consultation: <%= x[j].date_c %> <br>
+  Test Name:<%= x[j].test_name %> <br>
+   <% } %>
+   <% } %>
+   
+  <h3> Surgeries </h3>
+  <% if(w.length >0 ){ %>
+  <% for(var j=0;j<w.length ;j++){ %>
+  Surgery Name: <%= w[j].sname %> <br>
+   Surgery Doctor:<%= w[j].doc_id %> <br>
+   Surgery Date: <%= w[j].date_s %> <br>
+  <%  } %>
+  <% } %>
+  
+  
+</div>
+
+<div id="PMU" class="tabcontent"> <% for(var i=0;i<m.length;i++){ %>
+	 <h4>Consultation Date : <%= m[i].date_c %></h4><br>
+  Medicine : <%= m[i].name %><br>
+  Quantity: <%= m[i].noftab %><br>
+  Dosage: <%= m[i].dosage %><br><% } %>
+</div>
+
+<!--
+<div id="PA" class="tabcontent">
+<% if(y.length >0){ %> 
+<% for(var j=0;j<y.length ;j++){ %>
+  Date of Consultation: <%= y[j].date_c %> <br>
+  Doctor Name: <%= y[j].name %> <br>
+  Department:<%= y[j].dept_name %> <br>
+  <% } %>
+  <% } %>
+  </div>
+  -->
+  <div id="PA" class="tabcontent">
+<% for(var i=0;i<y.length;i++){ %>
+  Date of Consultation: <%= y[i].date_c %> <br>
+  Doctor Name: <%= y[i].name %> <br>
+  Department:<%= y[i].dept_name %> <br>
+<% } %>
+  <!-- remove this part  <div class="button" ><button><h3>Cancel an appointment</h3></button></div><br> --><div>
+    <div>
+    <form method="post" action="/delappoint">
+    <input type="radio" name="delap" id="del" value=1 required>
+    <label for="del">Delete appointment</label>
+    
+      <div class="reveal-if-active">
+        Departments in which apponitments have been booked:<br>
+        <% for(var i=0;i<y.length;i++) { %>
+        <input type="radio" id="which-dog" name="dept" id class="require-if-active" data-require-pair="#del" value= <%= y[i].consult_no %> >> <%= y[i].dept_name %> <br>
+        <button type="submit">Delete</button>
+        <% } %>
+        </div></form>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+     
+</body>
+</html> 

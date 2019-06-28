@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+</style>
+</head>
+<body>
+<h1>APPOINTMENT BOOKING</h1>
+<div id="book_apt" class="tabcontent">
+  <form method="POST" action="/apt">
+ <h4>Select date of appointment:</h4><br>
+ <% if(error=="error"){ %>
+ SELECT A DEPARTMENT!!
+ <% } %>
+ <% if(error=="noerror1"){ %>
+ APPOINTMENT SUCCESSFULLY BOOKED!!
+ <% } %>
+ <% if(error=="noerror"){ %>
+<input type="date" name="appdate" min="2018-11-16">
+<br><h4>
+  Select the department:<br>
+  
+    <input type="radio" name="rd" value="General medicine">General medicine<br>
+    <input type="radio" name="rd" value="Nephrology">Nephrology<br>
+    <input type="radio" name="rd" value="Cardiology">Cardiology<br>
+    <input type="radio" name="rd" value="Surgery">Surgery<br>  
+    <input type="radio" name="rd" value="Paediatrics">Paediatrics<br>
+    <input type="radio" name="rd" value="Orthopaedics">Orthopadics<br>
+    <input type="radio" name="rd" value="Gynaecology">Gynaecology<br>
+    <input type="radio" name="rd" value="Neurology">Neurology<br>
+  
+   <input type="submit" value="Book appointment">
+</h4>
+</form>
+</div>
+<% }%>
+</body>
+</html>

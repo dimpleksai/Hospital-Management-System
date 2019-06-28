@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Home page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">.container {
+    position: relative;
+}
+p {
+    border-style: solid;
+}
+.try{
+  background-color: green;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+	
+	h1{
+		border : 1px black;
+		background-color: #d9d9d9;
+		padding : 20px;
+	}
+	
+div a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    display:inline-block;
+}
+ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+ul li {display: inline-block;}
+ul li:hover {background: #555;}
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 200px;
+  display: none;
+}
+ul li ul li { 
+  background: #555; 
+  display: block; 
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: #666;}
+	</style>
+</head>
+<body>
+
+<h1>INFINITY HOSPITAL</h1>
+<div class="try">
+  
+
+      
+      
+        <a href="/login">Patients Login</a>
+        <a href="/doctor_login">Doctors login</a>
+        <a href="/signup">Patient Signup</a>
+  
+  </div>
+<br>
+<div class="container">
+  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="hospfi.jpg" alt="hospfi" style="width:100%;height:10%">
+      </div>
+
+      <div class="item">
+        <img src="hospfn.jpg" alt="hospfn" style="width:100%;height:10%">
+      </div>
+    
+      <div class="item">
+        <img src="hospf.jpg" alt="hospf" style="width:100%;height:10%">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div><br><p>
+
+Good health is the key to a happy and fruitful life; it is also the most neglected asset. Our lifestyle today is ridden with unnecessary stress, irregular working hours, and poor eating habits, late night partying and inadequate rest. All these coupled with high pollution levels result in physical and psychological health problems. <br>
+Monitor Your Health
+
+People tend to ignore their health until faced with medical complications. Health problems can be managed more effectively if detected at an early stage. Hence, health monitors have become the need of the hour. This is where the Wellness Clinic at Infinity Hospital comes in to the picture to help you.<br>
+We have around 6000 sq.ft. of dedicated place only for health checkup, along with equipments for better comfort of all guests.<br>
+We offer several preventive health check packages to suit specific needs. We do make customized packages for corporate and insurance companies based on individual requirements. The aim of these packages is to promote good health, prevent disease and facilitate early diagnosis and treatment, thereby paving the way to “WELLNESS”.<br>
+</p>
+<div class="col-xs-4">
+<h3>
+No of patients registered:<br>
+<h5><%= l %></h5>
+</h3>
+</div>
+<div class="col-xs-4">
+<h3>Departments:</h3><br>
+<h5>
+<ul>
+  <% for(var i=0;i< m.length;i++){ %>
+  <li><%=m[i].dept_name%>:<%=m[i].c %></li><br>
+<% } %>
+</ul>
+</h5>
+</div>
+
+<div class="col-xs-4">
+<h3>Ward Types:</h3><br>
+<h5>
+<ul>
+  <% for(var i=0;i< n.length;i++){ %>
+  <li><%=n[i].type%>:<%=n[i].c %></li><br>
+<% } %>
+</ul>
+</h5>
+</div>
+
+</body>
+</html>

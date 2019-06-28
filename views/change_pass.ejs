@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>change password</title>
+</head>
+<body>
+<center>
+DO NOT SHARE YOUR PASSWORD WITH ANYBODY <br>
+<form method="post" action="/changing_pass" onsubmit="return checkForm(this);">
+Enter your current password:<input type="password" name="oldpa" id="0"><br>
+Enter new password:<input type="password" name="newpa1" id="1"><br>
+Enter it again:  <input type="password" name="newpa2" id="2"><br>
+<button type="submit" id="3">Save Changes</button>
+<input type="hidden" name="eventname" value=<%= q %> >
+</form>
+</center>
+<script type="text/javascript">
+//p will be the existing password.it has to be passed to dis ejs file
+function checkForm(form){
+if(form.oldpa.value==p && form.newpa1.value==form.newpa2.value){
+alert("Password changed successfully!");
+
+return true;}
+else {
+
+alert("Something's wrong.Try once again!");
+return false;
+}
+
+</script>
+</body>tg
+</html>

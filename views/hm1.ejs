@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	h1{
+		border : 1px black;
+		background-color: #d9d9d9;
+		padding : 20px;
+	}
+	div {background-color: green;}
+div a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    display:inline-block;
+}
+ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+ul li {display: inline-block;}
+ul li:hover {background: #555;}
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 200px;
+  display: none;
+}
+ul li ul li { 
+  background: #555; 
+  display: block; 
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: #666;}
+	</style>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<h1>NAME OF THE HOSPITAL</h1>
+<div>
+  
+  <ul>
+    <li>
+      <a href="#">Login/Signup</a>
+      <ul>
+        <li><a href="login">Patients Login</a></li>
+        <li><a href="doctor_login">Doctors login</a></li>
+        <li><a href="signup">Patient Signup</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+Content part ...u guys decide and tell!
+</body>
+</html>
